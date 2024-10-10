@@ -96,4 +96,4 @@ The API is hosted at bikes.jordanpartridge.us. (Add specific deployment instruct
 (Add guidelines for contributing to the project, if applicable)
 
 ## License
-(Specify the license under which this project is released)
+(Specify the license under which this project is released)2
