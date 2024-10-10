@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Ride;
+use App\Models\RideStat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RideStat>
+ * @extends Factory<RideStat>
  */
 class RideStatFactory extends Factory
 {
@@ -17,7 +19,10 @@ class RideStatFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'ride_id' => Ride::first() ?? Ride::factory(),
+            'key' => $this->faker->word(),
+            'value' => $this->faker->randomNumber(),
+            'type' => $this->faker->randomElement(['distance', 'speed', 'duration']),
         ];
     }
 }
