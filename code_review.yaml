@@ -1,0 +1,4 @@
+path_filters:
+  ignore:
+    - 'public/js/filament/**'
+    - 'public/css/filament/**'
