@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Ride;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ride>
+ * @extends Factory<Ride>
  */
 class RideFactory extends Factory
 {
@@ -17,8 +18,8 @@ class RideFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'external_id' => fake()->randomNumber(5),
+            'name' => fake()->words(3, true),
+            'external_id' => fake()->unique()->regexify('[A-Z0-9]{10}'),
             'recorded_at' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }

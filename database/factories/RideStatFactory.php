@@ -21,7 +21,13 @@ class RideStatFactory extends Factory
         return [
             'ride_id' => Ride::first() ?? Ride::factory(),
             'key' => $this->faker->word(),
-            'value' => $this->faker->randomNumber(),
+            'value' => function (array $attributes) {
+                return match ($attributes['type']) {
+                    'distance' => $this->faker->randomFloat(2, 0, 100),
+                    'speed' => $this->faker->randomFloat(1, 0, 30),
+                    'duration' => $this->faker->numberBetween(60, 3600),
+                };
+            },
             'type' => $this->faker->randomElement(['distance', 'speed', 'duration']),
         ];
     }
